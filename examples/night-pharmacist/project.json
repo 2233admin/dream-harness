@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "title": "夜班药师",
+  "language": "zh",
+  "format": {
+    "episodes": 3,
+    "episodeSeconds": { "min": 30, "max": 90 },
+    "aspectRatio": "9:16"
+  },
+  "source": {
+    "kind": "idea",
+    "logline": "夜班药师发现老板用预盖章的空白处方倒卖止咳水，她要在交班前拿到证据。"
+  },
+  "targets": { "video": ["h3", "seedance"], "image": ["gpt-image"] },
+  "speech": { "charsPerSecond": 4.5, "defaultActionSeconds": 2 }
+}

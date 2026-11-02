@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "episodes": [
+    {
+      "number": 1,
+      "scenes": [
+        {
+          "id": "e1-counter",
+          "locationId": "counter",
+          "time": "night",
+          "interior": true,
+          "characters": ["lin-wan", "xiao-yu", "zhao-deming"],
+          "beats": [
+            { "type": "action", "text": "墙上电子钟跳到 02:00。玻璃门被推开，风铃响。", "seconds": 2 },
+            { "type": "action", "text": "小雨把一张处方拍在柜台上，帽檐压得很低。" },
+            { "type": "dialogue", "characterId": "xiao-yu", "text": "止咳水，六瓶。", "emotion": "不耐烦" },
+            { "type": "action", "text": "林晚拿起处方，对着灯看医生签章。" },
+            { "type": "voiceover", "characterId": "lin-wan", "text": "同一个少年，同一个签名，这个月第三次。" },
+            { "type": "action", "text": "林晚用指腹蹭签章边缘，红印纹丝不动。", "seconds": 3 },
+            { "type": "dialogue", "characterId": "lin-wan", "text": "这个章是印上去的，不是盖的。这单我不能发。", "emotion": "平静" },
+            { "type": "dialogue", "characterId": "xiao-yu", "text": "上次不是卖了吗？", "emotion": "慌" },
+            { "type": "action", "text": "后库门开，赵德明笑着走出来，顺手把处方抽走。" },
+            { "type": "dialogue", "characterId": "zhao-deming", "text": "老顾客了，小林你太较真。我来发。", "emotion": "和气" },
+            { "type": "action", "text": "赵德明从柜里取出六瓶止咳水装袋，小雨抓起袋子就走。", "seconds": 3 },
+            { "type": "dialogue", "characterId": "lin-wan", "text": "赵总，这出了事是我的执业证。", "emotion": "压着火" },
+            { "type": "dialogue", "characterId": "zhao-deming", "text": "出不了事。去后库把纸箱收一收。", "emotion": "笑意不达眼底" }
+          ]
+        },
+        {
+          "id": "e1-storeroom",
+          "locationId": "storeroom",
+          "time": "night",
+          "interior": true,
+          "characters": ["lin-wan"],
+          "beats": [
+            { "type": "action", "text": "林晚拖出垃圾桶准备换袋，桶底露出一角红色。" },
+            { "type": "action", "text": "她抽出来：一整叠处方笺，每张都盖好了医生签章，内容空白。", "seconds": 3 },
+            { "type": "action", "text": "门外传来赵德明的脚步声。林晚把处方塞进白大褂口袋。", "seconds": 2.5 }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "scenes": [
+        {
+          "id": "e2-storeroom",
+          "locationId": "storeroom",
+          "time": "night",
+          "interior": true,
+          "characters": ["lin-wan", "zhao-deming"],
+          "beats": [
+            { "type": "action", "text": "赵德明在门外打电话，声音压得很低。" },
+            { "type": "dialogue", "characterId": "zhao-deming", "text": "今晚货不够，让他们明天再来一趟。", "emotion": "低声" },
+            { "type": "action", "text": "林晚蹲在纸箱后，拉开最底层的抽屉，摸到一本硬皮账本。", "seconds": 3 },
+            { "type": "action", "text": "账本上是一列日期、瓶数和代号。", "seconds": 2 },
+            { "type": "voiceover", "characterId": "lin-wan", "text": "三号、九号、十七号，正是那个孩子来店的夜晚。" },
+            { "type": "action", "text": "她用手机一页一页拍下来，快门声调成了静音。", "seconds": 3 },
+            { "type": "action", "text": "她给周叙发消息：店里有东西，你天亮前来一趟。" }
+          ]
+        },
+        {
+          "id": "e2-counter",
+          "locationId": "counter",
+          "time": "night",
+          "interior": true,
+          "characters": ["lin-wan", "zhao-deming", "zhou-xu"],
+          "beats": [
+            { "type": "action", "text": "林晚回到柜台，手机屏幕亮起，周叙回复。" },
+            { "type": "voiceover", "characterId": "zhou-xu", "text": "四点前到。别一个人硬来。" },
+            { "type": "action", "text": "赵德明走进后库，监控主机的指示灯一盏一盏灭掉。", "seconds": 3 },
+            { "type": "action", "text": "赵德明回到柜台，把一杯热豆浆放在林晚面前。", "seconds": 2.5 },
+            { "type": "dialogue", "characterId": "zhao-deming", "text": "监控坏了，我刚清了一下。小林，你今晚什么都没看见，对吧？", "emotion": "笑着" },
+            { "type": "action", "text": "林晚看着豆浆，没有碰。", "seconds": 2 },
+            { "type": "dialogue", "characterId": "lin-wan", "text": "我什么都没看见。", "emotion": "平静" }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "scenes": [
+        {
+          "id": "e3-counter",
+          "locationId": "counter",
+          "time": "dawn",
+          "interior": true,
+          "characters": ["lin-wan", "xiao-yu", "zhao-deming", "zhou-xu"],
+          "beats": [
+            { "type": "action", "text": "林晚的手插在白大褂口袋里，指尖捏着一块硬盘。", "seconds": 2.5 },
+            { "type": "voiceover", "characterId": "lin-wan", "text": "他删掉的，是我换进去的空盘。" },
+            { "type": "action", "text": "风铃响。小雨又站在柜台前，这次手里没有处方。" },
+            { "type": "dialogue", "characterId": "xiao-yu", "text": "他们让我再来拿货。我不想干了。", "emotion": "发抖" },
+            { "type": "dialogue", "characterId": "lin-wan", "text": "那就等一个人来，把你知道的说给他听。", "emotion": "温和" },
+            { "type": "action", "text": "门被推开，周叙走进来，看了一眼小雨，又看了一眼林晚。", "seconds": 3 },
+            { "type": "action", "text": "赵德明从后库冲出来，脸色变了。" },
+            { "type": "dialogue", "characterId": "zhao-deming", "text": "小林，监控硬盘呢？那是店里的东西，你交出来！", "emotion": "急" },
+            { "type": "dialogue", "characterId": "zhou-xu", "text": "你刚说监控坏了。坏了的硬盘，你这么着急要？", "emotion": "冷" },
+            { "type": "action", "text": "林晚把硬盘和账本一起放到柜台上，推向周叙。", "seconds": 3 }
+          ]
+        },
+        {
+          "id": "e3-street",
+          "locationId": "street",
+          "time": "dawn",
+          "interior": false,
+          "characters": ["lin-wan", "zhou-xu"],
+          "beats": [
+            { "type": "action", "text": "天刚亮，警车灯在街口一闪一闪。林晚脱下白大褂搭在臂弯。", "seconds": 3 },
+            { "type": "dialogue", "characterId": "zhou-xu", "text": "你这个班，交得够晚的。", "emotion": "松了口气" },
+            { "type": "dialogue", "characterId": "lin-wan", "text": "药师交班，得把账对清楚。", "emotion": "笑" }
+          ]
+        }
+      ]
+    }
+  ]
+}
