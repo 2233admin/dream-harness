@@ -40,7 +40,7 @@ const CASES = [
   ['X1', 'idea', 'script', 'error', (d) => { d.outline.episodes = []; }],
   ['P1', 'idea', 'project', 'error', (d) => { d.project.format.aspectRatio = '2:1'; }],
   ['P2', 'idea', 'project', 'error', (d) => { d.project.format.episodeSeconds = { min: 90, max: 30 }; }],
-  ['B1', 'idea', 'bible', 'error', (d) => { d.bible = d.bible.replace(/## 核心冲突\n[^#]*/u, '## 核心冲突\n（待写）\n\n'); }],
+  ['B1', 'idea', 'bible', 'error', (d) => { d.bible = d.bible.replace(/## 核心冲突\r?\n[^#]*/u, '## 核心冲突\n（待写）\n\n'); }],
   ['B2', 'idea', 'bible', 'warn', (d) => { d.project.format.episodes = 4; }],
   ['N1', 'novel', 'source', 'error', (d) => { d.source.encoding = 'big5'; }],
   ['N2', 'novel', 'source', 'error', (d) => { d.source.chapters[1].n = 7; }],
@@ -55,6 +55,7 @@ const CASES = [
   ['O8', 'idea', 'outline', 'warn', (d) => { d.outline.episodes.forEach((e) => { e.characters = e.characters.filter((c) => c !== 'zhou-xu'); }); }],
   ['O9', 'idea', 'outline', 'error', (d) => { d.project.rules = { maxPayoffGap: 1 }; d.outline.episodes[0].payoffs = []; d.outline.episodes[1].payoffs = []; }],
   ['O10', 'idea', 'outline', 'error', (d) => { d.outline.episodes[0].synopsis += '林晚说：「这单我不能发。」'; }],
+  ['O10', 'idea', 'outline', 'error', (d) => { d.outline.episodes[0].synopsis += '林晚说："这单我不能发。"'; }],
   ['O11', 'novel', 'outline', 'error', (d) => { d.outline.adaptation.cut = []; }],
   ['O12', 'novel', 'outline', 'error', (d) => { d.outline.adaptation.keep[0].evidence = '原文里没有这一句话'; }],
   ['O13', 'novel', 'outline', 'error', (d) => { d.outline.episodes[1].source.chapters = [4, 9]; }],
@@ -74,6 +75,7 @@ const CASES = [
   ['S10', 'idea', 'script', 'error', (d) => { beats(d, 0, 0)[2].text = '止咳水六瓶'.repeat(8); }],
   ['S11', 'idea', 'script', 'error', (d) => { const s = d.script.episodes[2].scenes[1]; s.beats = s.beats.filter((b) => b.type !== 'action'); }],
   ['S12', 'idea', 'script', 'error', (d) => { beats(d, 0, 0)[1].text = '小雨拍下处方：「止咳水，六瓶。」'; }],
+  ['S12', 'idea', 'script', 'error', (d) => { beats(d, 0, 0)[1].text = '小雨拍下处方："止咳水，六瓶。"'; }],
   ['S13', 'idea', 'script', 'warn', (d) => {
     for (let i = 0; i < 3; i++) beats(d, 0, 1).push({ type: 'voiceover', characterId: 'lin-wan', text: '再想一想。' });
   }],

@@ -51,3 +51,11 @@ test('re-importing the committed sample novel reproduces the committed index', (
   const committed = JSON.parse(readFileSync(join(NOVEL_SAMPLE, 'story', 'source', 'index.json'), 'utf8'));
   assert.deepEqual(index, committed);
 }));
+
+test('size fallback never splits a surrogate pair', () => {
+  const { chapters } = splitChapters('字'.repeat(4999) + '😀尾');
+  assert.equal(chapters.length, 2);
+  assert.ok(chapters[0].text.endsWith('😀'));
+  assert.equal(chapters[1].text, '尾');
+  assert.ok(!chapters.some((c) => c.text.includes('\uFFFD')));
+});

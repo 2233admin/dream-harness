@@ -147,3 +147,12 @@ test('validate all passes on the novel sample', () => {
   assert.equal(r.code, 0, r.out);
   assert.deepEqual(body.stages, ['project', 'source', 'outline']);
 });
+
+test('malformed source index entries are reported, not thrown', () => withTemp((dir) => {
+  cpSync(join(ROOT, 'examples', 'clock-repair'), dir, { recursive: true });
+  writeFileSync(join(dir, 'story', 'source', 'index.json'), JSON.stringify({ schemaVersion: 1, chapters: [null] }));
+  assert.equal(dh('validate', 'project', '--project', dir, '--json').code, 0);
+  const r = dh('validate', 'source', '--project', dir);
+  assert.equal(r.code, 1);
+  assert.match(r.out, /N1/);
+}));
