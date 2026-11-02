@@ -1,4 +1,4 @@
-# drama-harness
+# dream-harness
 
 由 Agent 调用的短剧创作 skill 集合：写文（原创 / 改编 / 长篇连载）→ 分集大纲 → 剧本 → 资产设定 → 分镜 → 各模型提示词 → 生成 → 验收。
 
@@ -45,3 +45,5 @@ npm test
 ```
 
 参考来源与许可证见 [NOTICE](NOTICE)。
+
+本项目以 Apache License 2.0 发布，见 [LICENSE](LICENSE)。

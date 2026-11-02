@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "drama-harness/script.schema.json",
+  "$id": "dream-harness/script.schema.json",
   "title": "script.json：剧本，场次加节拍流（动作、台词、旁白交替）",
   "type": "object",
   "required": ["schemaVersion", "episodes"],

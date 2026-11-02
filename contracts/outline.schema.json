@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "drama-harness/outline.schema.json",
+  "$id": "dream-harness/outline.schema.json",
   "title": "outline.json：分集大纲与资产清单；三种写文入口在此汇合",
   "type": "object",
   "required": ["schemaVersion", "characters", "locations", "props", "episodes"],

@@ -1,10 +1,10 @@
 # AGENTS.md
 
-drama-harness：由 Agent 调用的短剧创作 skill 集合与 `dh` CLI。设计见 `docs/design.md`。
+dream-harness：由 Agent 调用的短剧创作 skill 集合与 `dh` CLI。设计见 `docs/design.md`。
 
 ## 工作约定
 
-- 执行态记录在本仓的 GitHub issue（`2233admin/drama-harness`）；PR 正文写 `Closes #N`。
+- 执行态记录在本仓的 GitHub issue（`2233admin/dream-harness`）；PR 正文写 `Closes #N`。
 - CLI 零依赖：只用 Node 22+ 标准库，不加 npm 依赖。
 - 契约（`contracts/*.schema.json`）是所有 skill 共用的唯一数据定义。改契约必须同时改校验、样例和测试。
 - 质量门由脚本判定，返回退出码 0（通过）/ 1（有问题）/ 2（参数或环境错误）。不得让模型自己宣布通过。

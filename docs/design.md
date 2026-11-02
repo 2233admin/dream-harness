@@ -125,7 +125,7 @@ dh doctor                         检查 Node、ComfyUI CLI、API key 等依赖�
 
 ## 9. 待确认
 
-1. 仓库名与位置（建议 `D:\projects\drama-harness`，GitHub `2233admin/drama-harness`）。
+1. 仓库名与位置：已定为 GitHub `2233admin/dream-harness`（公开，Apache-2.0）；本机目录仍为 `D:\projects\drama-harness`。
 2. 自研短剧制作平台：仓库位置、接收格式（导出包还是 API）、鉴权方式。
 3. ComfyUI CLI 指哪个：官方 `comfy-cli`，还是自己的封装；本机 ComfyUI 的工作流目录。
 4. 云端模型走哪个 API 网关（直连各厂商，还是统一中转）。

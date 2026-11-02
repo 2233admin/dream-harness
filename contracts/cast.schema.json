@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "drama-harness/cast.schema.json",
+  "$id": "dream-harness/cast.schema.json",
   "title": "cast.json：角色设定；给人读的字段用项目语言，喂给模型的提示词一律英文",
   "type": "object",
   "required": ["schemaVersion", "characters"],
