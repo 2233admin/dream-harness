@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "drama-harness/project.schema.json",
+  "$id": "dream-harness/project.schema.json",
   "title": "project.json：一个短剧项目的全局配置",
   "type": "object",
   "required": ["schemaVersion", "title", "language", "format", "source", "targets"],

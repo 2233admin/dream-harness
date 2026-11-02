@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "drama-harness/source.schema.json",
+  "$id": "dream-harness/source.schema.json",
   "title": "story/source/index.json：dh import 生成的小说章节索引；不要手改",
   "type": "object",
   "required": ["schemaVersion", "file", "encoding", "splitBy", "chapters"],

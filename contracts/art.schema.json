@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "drama-harness/art.schema.json",
+  "$id": "dream-harness/art.schema.json",
   "title": "art.json：场景与叙事道具设定；提示词一律英文，场景提示词必须空景",
   "type": "object",
   "required": ["schemaVersion", "era", "locations", "props"],
