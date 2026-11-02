@@ -34,7 +34,7 @@ test('validate --json is machine readable', () => {
   const r = dh('validate', 'all', '--project', SAMPLE, '--json');
   const body = JSON.parse(r.out);
   assert.equal(body.pass, true);
-  assert.deepEqual(body.stages, ['project', 'outline', 'script']);
+  assert.deepEqual(body.stages, ['project', 'bible', 'outline', 'script']);
 });
 
 test('validate exits 1 on a broken copy of the sample', () => withTemp((dir) => {
@@ -94,7 +94,7 @@ test('usage errors exit 2', () => {
 
 test('status routes the sample to the asset stage', () => {
   const status = JSON.parse(dh('status', '--project', SAMPLE, '--json').out);
-  assert.deepEqual(status.stages.map((s) => s.state), ['pass', 'pass', 'pass']);
+  assert.deepEqual(status.stages.map((s) => [s.stage, s.state]), [['project', 'pass'], ['bible', 'pass'], ['outline', 'pass'], ['script', 'pass']]);
   assert.equal(status.durations.length, 3);
   assert.match(status.next.skill, /drama-cast/);
 });
@@ -103,4 +103,47 @@ test('doctor reports without failing on missing optional tools', () => {
   const r = dh('doctor', '--json');
   assert.equal(r.code, 0);
   assert.equal(JSON.parse(r.out).pass, true);
+});
+
+test('novel path: init, import, then status asks drama-adapt for the outline', () => withTemp((dir) => {
+  const target = join(dir, 'adapt');
+  assert.equal(dh('init', target, '--episodes', '2', '--source', 'novel').code, 0);
+  let status = JSON.parse(dh('status', '--project', target, '--json').out);
+  assert.deepEqual(status.stages.map((s) => s.stage), ['project', 'source', 'outline', 'script']);
+  assert.match(status.next.action, /dh import/);
+  const r = dh('import', join(ROOT, 'examples', 'clock-repair', 'novel', '修表铺.txt'), '--project', target);
+  assert.equal(r.code, 0, r.err);
+  assert.match(r.out, /第四章 三点钟/);
+  assert.equal(dh('validate', 'source', '--project', target).code, 0);
+  status = JSON.parse(dh('status', '--project', target, '--json').out);
+  assert.equal(status.next.skill, 'drama-adapt');
+  assert.match(status.next.action, /outline/);
+}));
+
+test('idea path: init writes a bible template that fails B1 until filled', () => withTemp((dir) => {
+  const target = join(dir, 'idea');
+  assert.equal(dh('init', target, '--episodes', '3').code, 0);
+  const v = dh('validate', 'bible', '--project', target);
+  assert.equal(v.code, 1);
+  assert.match(v.out, /B1/);
+  const status = JSON.parse(dh('status', '--project', target, '--json').out);
+  assert.equal(status.next.skill, 'drama-idea');
+}));
+
+test('import usage errors exit 2', () => withTemp((dir) => {
+  const target = join(dir, 'p');
+  dh('init', target, '--source', 'novel');
+  assert.equal(dh('import', '--project', target).code, 2);
+  assert.equal(dh('import', join(dir, 'missing.txt'), '--project', target).code, 2);
+  const novel = join(ROOT, 'tests', 'fixtures', 'gbk-novel.txt');
+  assert.equal(dh('import', novel, '--project', target, '--encoding', 'latin1').code, 2);
+  assert.equal(dh('import', novel, '--project', target, '--encoding', 'utf-8').code, 2, 'GBK bytes forced as utf-8');
+  assert.equal(dh('import', novel, '--project', target).code, 0);
+}));
+
+test('validate all passes on the novel sample', () => {
+  const r = dh('validate', 'all', '--project', join(ROOT, 'examples', 'clock-repair'), '--json');
+  const body = JSON.parse(r.out);
+  assert.equal(r.code, 0, r.out);
+  assert.deepEqual(body.stages, ['project', 'source', 'outline']);
 });

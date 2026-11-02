@@ -19,3 +19,4 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: npm test
       - run: node bin/dh.mjs validate all --project examples/night-pharmacist
+      - run: node bin/dh.mjs validate all --project examples/clock-repair

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "title": "修表铺",
+  "language": "zh",
+  "format": {
+    "episodes": 2,
+    "episodeSeconds": { "min": 60, "max": 120 },
+    "aspectRatio": "9:16"
+  },
+  "source": {
+    "kind": "novel",
+    "logline": "年轻修表匠在一只停在三点的怀表里，找到爷爷藏了二十多年的拆迁证据。",
+    "path": "novel/修表铺.txt"
+  },
+  "targets": { "video": ["kling"], "image": ["nano-banana"] }
+}

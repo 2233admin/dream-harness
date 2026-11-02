@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "file": "修表铺.txt",
+  "encoding": "utf-8",
+  "splitBy": "heading",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "序",
+      "file": "chapters/0001.txt",
+      "chars": 34
+    },
+    {
+      "n": 2,
+      "title": "第一章 停在三点的表",
+      "file": "chapters/0002.txt",
+      "chars": 260
+    },
+    {
+      "n": 3,
+      "title": "第二章 拆迁通知",
+      "file": "chapters/0003.txt",
+      "chars": 221
+    },
+    {
+      "n": 4,
+      "title": "第三章 账簿",
+      "file": "chapters/0004.txt",
+      "chars": 258
+    },
+    {
+      "n": 5,
+      "title": "第四章 三点钟",
+      "file": "chapters/0005.txt",
+      "chars": 244
+    }
+  ]
+}

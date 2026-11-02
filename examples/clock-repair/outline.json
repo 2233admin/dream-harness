@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "adaptation": {
+    "mode": "core",
+    "cut": [
+      { "what": "王阿婆找猫的支线", "why": "与证据主线无关，两集装不下，删掉不影响任何因果" }
+    ],
+    "merged": [
+      { "into": "lu-chuan", "from": ["陆川", "陆晴"], "why": "两人的功能都是把父亲的遗言带给沈砚，短剧合成一张脸，省一个角色位" }
+    ],
+    "keep": [
+      { "what": "机芯背面爷爷的刻字，是沈砚认出这只表的起点", "evidence": "在机芯背面看见一个很小的刻字，是一个“沈”字" },
+      { "what": "账簿里一九九八年的记录，把表和证据连起来", "evidence": "陆姓，怀表一只，代藏一物，待原主来取" },
+      { "what": "停在三点的表，作为听证会上的情绪落点", "evidence": "这只表停在三点，是我父亲把东西交出去的那个下午" }
+    ],
+    "note": "全剧终点从拆迁暂停改为当场反转；陆晴的遗言台词改由陆川说出。"
+  },
+  "characters": [
+    { "id": "shen-yan", "name": "沈砚", "role": "protagonist", "summary": "接手爷爷修表铺半年的年轻修表匠，沉得住气" },
+    { "id": "lu-chuan", "name": "陆川", "role": "supporting", "summary": "来修父亲遗物怀表的男人，知道父亲临终遗言（合并了原著的陆晴）" },
+    { "id": "he-zong", "name": "何总", "role": "antagonist", "summary": "拆迁办负责人，何家当年伪造了住户签名" }
+  ],
+  "locations": [
+    { "id": "shop", "name": "修表铺", "summary": "旧城巷最里头的修表铺，玻璃柜台，满墙挂钟，工作台一盏台灯" },
+    { "id": "alley", "name": "旧城巷", "summary": "雨后的青石巷子，两侧老木门，门板上贴着拆迁通知" },
+    { "id": "hearing-room", "name": "听证会议室", "summary": "坐满人的会议室，墙上挂钟，长桌上摆着文件" }
+  ],
+  "props": [
+    { "id": "pocket-watch", "name": "停在三点的怀表", "summary": "陆川父亲的怀表，机芯背面刻着沈字，表盖夹层藏着证据", "narrative": true },
+    { "id": "repair-ledger", "name": "修表账簿", "summary": "爷爷一年一本的硬皮账簿，一九九八年一页记着代藏一物", "narrative": true },
+    { "id": "signature-note", "name": "签名原件", "summary": "泛黄的纸，正面是爷爷的说明，背面是二十三位住户的亲笔签名", "narrative": true }
+  ],
+  "episodes": [
+    {
+      "number": 1,
+      "title": "停在三点的表",
+      "synopsis": "雨夜，陆川把父亲的怀表交给沈砚，求她在三天后拆迁前修好。沈砚在机芯背面认出爷爷的刻字。第二天何总上门逼她签拆迁协议，被她一句地契顶了回去。当晚陆川说出父亲的遗言：表里有东西，要交给修表的沈师傅。",
+      "hook": {
+        "opening": "一只停在三点的表，机芯里刻着她爷爷的记号。",
+        "cliffhanger": "父亲的遗言：表里有东西。"
+      },
+      "payoffs": [
+        { "kind": "reveal", "text": "沈砚认出机芯背面爷爷的刻字" },
+        { "kind": "face-slap", "text": "沈砚一句地契让何总的笑僵在脸上" }
+      ],
+      "characters": ["shen-yan", "lu-chuan", "he-zong"],
+      "locations": ["shop", "alley"],
+      "props": ["pocket-watch"],
+      "source": { "chapters": [2, 3] }
+    },
+    {
+      "number": 2,
+      "title": "三点钟",
+      "synopsis": "沈砚在爷爷的账簿里找到一九九八年代藏一物的记录，撬开表盖夹层，取出住户签名原件。听证会上何总拿出盖章文件，沈砚和陆川把原件、账簿和怀表一起摆上桌，签名对不上，拆迁程序当场暂停。回到铺子，怀表重新走了起来。",
+      "hook": {
+        "opening": "账簿上写着：代藏一物，待原主来取。",
+        "cliffhanger": ""
+      },
+      "payoffs": [
+        { "kind": "reveal", "text": "表盖夹层里藏着二十三位住户的亲笔签名" },
+        { "kind": "reversal", "text": "听证会上签名对不上，拆迁当场暂停" }
+      ],
+      "characters": ["shen-yan", "lu-chuan", "he-zong"],
+      "locations": ["shop", "hearing-room"],
+      "props": ["repair-ledger", "signature-note", "pocket-watch"],
+      "source": { "chapters": [4, 5] }
+    }
+  ]
+}

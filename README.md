@@ -4,14 +4,22 @@
 
 设计稿见 [docs/design.md](docs/design.md)。
 
-## 现状（M0）
+## 现状（M1）
 
-| 已有 | 说明 |
+| Skill | 做什么 |
 | --- | --- |
-| `contracts/` | `project`、`outline`、`script` 三份共享契约（JSON Schema） |
-| `bin/dh.mjs` | CLI：`init`、`status`、`validate`、`doctor`；零依赖，Node 22+ |
-| `skills/drama/` | 总入口 skill：判断阶段、路由下一步、守住人工确认点 |
-| `examples/night-pharmacist/` | 原创三集样例《夜班药师》，全部质量门通过 |
+| [drama](skills/drama) | 总入口：判断阶段、路由下一步、守住人工确认点 |
+| [drama-idea](skills/drama-idea) | 一句话创意 → 故事设定 `story/bible.md` |
+| [drama-adapt](skills/drama-adapt) | 小说原文 → `dh import` 切章 → 带原文证据的改编大纲 |
+| [drama-outline](skills/drama-outline) | 故事设定或正文 → 分集大纲 `outline.json` |
+| [drama-script](skills/drama-script) | 分集大纲 → 剧本 `script.json` |
+
+| 其他 | 说明 |
+| --- | --- |
+| `contracts/` | `project`、`source`、`outline`、`script` 共享契约（JSON Schema） |
+| `bin/dh.mjs` | CLI：`init`、`import`、`status`、`validate`、`doctor`；零依赖，Node 22+ |
+| `examples/night-pharmacist/` | 原创样例《夜班药师》：一句话创意入口，走到剧本 |
+| `examples/clock-repair/` | 原创样例《修表铺》：小说改编入口，走到大纲 |
 
 质量门清单见 [skills/drama/references/pipeline.md](skills/drama/references/pipeline.md)。
 
@@ -19,8 +27,9 @@
 
 ```bash
 node bin/dh.mjs status --project examples/night-pharmacist
-node bin/dh.mjs validate all --project examples/night-pharmacist
-node bin/dh.mjs init my-drama --title 我的短剧 --episodes 20 --source idea
+node bin/dh.mjs validate all --project examples/clock-repair
+node bin/dh.mjs init my-drama --title 我的短剧 --episodes 20 --source novel
+node bin/dh.mjs import 我的小说.txt --project my-drama
 node bin/dh.mjs doctor
 ```
 

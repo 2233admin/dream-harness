@@ -1,0 +1,2 @@
+*.txt text eol=lf
+tests/fixtures/gbk-novel.txt binary
