@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "drama-harness/project.schema.json",
+  "title": "project.json：一个短剧项目的全局配置",
+  "type": "object",
+  "required": ["schemaVersion", "title", "language", "format", "source", "targets"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "language": { "enum": ["zh", "en"] },
+    "format": {
+      "type": "object",
+      "required": ["episodes", "episodeSeconds", "aspectRatio"],
+      "additionalProperties": false,
+      "properties": {
+        "episodes": { "type": "integer", "minimum": 1, "maximum": 200 },
+        "episodeSeconds": {
+          "type": "object",
+          "required": ["min", "max"],
+          "additionalProperties": false,
+          "properties": {
+            "min": { "type": "number", "minimum": 1 },
+            "max": { "type": "number", "minimum": 1 }
+          }
+        },
+        "aspectRatio": { "enum": ["9:16", "16:9", "1:1", "3:4", "4:3"] }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["kind"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "enum": ["idea", "novel", "serial"] },
+        "logline": { "type": "string" },
+        "path": { "type": "string" }
+      }
+    },
+    "targets": {
+      "type": "object",
+      "required": ["video", "image"],
+      "additionalProperties": false,
+      "properties": {
+        "video": {
+          "type": "array",
+          "items": { "enum": ["h3", "seedance", "kling", "comfyui", "platform"] }
+        },
+        "image": {
+          "type": "array",
+          "items": { "enum": ["gpt-image", "nano-banana", "comfyui", "platform"] }
+        }
+      }
+    },
+    "speech": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "charsPerSecond": { "type": "number", "minimum": 1, "maximum": 15 },
+        "defaultActionSeconds": { "type": "number", "minimum": 0.5, "maximum": 15 }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "required": ["currency", "limit"],
+      "additionalProperties": false,
+      "properties": {
+        "currency": { "enum": ["CNY", "USD"] },
+        "limit": { "type": "number", "minimum": 0 }
+      }
+    }
+  }
+}

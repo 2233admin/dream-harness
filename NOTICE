@@ -1,0 +1,11 @@
+drama-harness
+
+Methods in this project were studied from the following projects. As of M0 no code
+or text is copied from them; any future reuse must keep the original license notice here.
+
+- shuohao-skills — https://github.com/eternityspring/shuohao-skills — Apache License 2.0
+  (adaptation outline, beat-claiming script contract, scripted quality gates)
+- oh-story-claudecode — https://github.com/zenstory-ai/oh-story-claudecode — MIT License
+  (file system as memory, pre/post write checks, deslop layers)
+- cheng-yi-jing-skill — https://github.com/tectivirus/cheng-yi-jing-skill — MIT License
+  (Shot Card, per-model prompt lint with pass/fail fixtures, single-cause revision)

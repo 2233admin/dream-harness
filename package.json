@@ -1,0 +1,13 @@
+{
+  "name": "drama-harness",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Agent-driven short drama creation harness: story writing, script, assets, prompts, generation.",
+  "type": "module",
+  "bin": { "dh": "bin/dh.mjs" },
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test \"tests/*.test.mjs\"",
+    "validate:examples": "node bin/dh.mjs validate all --project examples/night-pharmacist"
+  }
+}

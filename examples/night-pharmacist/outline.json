@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "characters": [
+    { "id": "lin-wan", "name": "林晚", "role": "protagonist", "summary": "夜班执业药师，二十八岁，较真，靠细节吃饭" },
+    { "id": "zhao-deming", "name": "赵德明", "role": "antagonist", "summary": "药店老板，表面和气，用预盖章空白处方向倒货团伙出货" },
+    { "id": "zhou-xu", "name": "周叙", "role": "supporting", "summary": "辖区民警，林晚的高中同学，说话直" },
+    { "id": "xiao-yu", "name": "小雨", "role": "supporting", "summary": "十七岁少年，被倒货团伙雇来跑腿买药" }
+  ],
+  "locations": [
+    { "id": "counter", "name": "夜间药房柜台", "summary": "二十四小时药店的收银与发药柜台，冷白灯，玻璃药柜" },
+    { "id": "storeroom", "name": "药房后库", "summary": "堆满纸箱的狭窄后库，一盏暖黄吸顶灯，角落有监控主机" },
+    { "id": "street", "name": "药店门外街口", "summary": "凌晨的街口，路灯，药店绿色十字灯牌" }
+  ],
+  "props": [
+    { "id": "prescription", "name": "预盖章空白处方", "summary": "一叠已盖医生签章、内容空白的处方笺", "narrative": true },
+    { "id": "ledger", "name": "私账本", "summary": "赵德明手写的出货账本，记着日期、数量和代号", "narrative": true },
+    { "id": "cctv-drive", "name": "监控硬盘", "summary": "监控主机里的硬盘，存着近一个月的录像", "narrative": true }
+  ],
+  "episodes": [
+    {
+      "number": 1,
+      "title": "第三张处方",
+      "synopsis": "凌晨两点，小雨第三次拿同一位医生签名的处方来买止咳水。林晚发现签章是印上去的，拒售；赵德明出面放行。林晚在后库垃圾桶里发现一叠预盖章的空白处方。",
+      "hook": {
+        "opening": "同一个少年，同一个签名，这个月第三次。",
+        "cliffhanger": "垃圾桶里是一整叠盖好章的空白处方。"
+      },
+      "payoffs": [{ "kind": "reveal", "text": "林晚用指腹蹭开签章，发现是印的不是盖的" }],
+      "characters": ["lin-wan", "xiao-yu", "zhao-deming"],
+      "locations": ["counter", "storeroom"],
+      "props": ["prescription"]
+    },
+    {
+      "number": 2,
+      "title": "后库的账本",
+      "synopsis": "林晚趁赵德明打电话潜入后库，翻到私账本，日期与小雨来店的夜晚一一对上，她给周叙发消息。赵德明回到后库删除监控，警告她今晚什么都没看见。",
+      "hook": {
+        "opening": "账本上的日期，正是小雨来店的那几个夜晚。",
+        "cliffhanger": "赵德明删掉监控，盯着她说：你今晚什么都没看见。"
+      },
+      "payoffs": [{ "kind": "reveal", "text": "账本日期与林晚记下的夜晚完全吻合" }],
+      "characters": ["lin-wan", "zhao-deming", "zhou-xu"],
+      "locations": ["storeroom", "counter"],
+      "props": ["ledger", "cctv-drive"]
+    },
+    {
+      "number": 3,
+      "title": "交班",
+      "synopsis": "林晚早已把监控硬盘换成空盘。小雨回店，林晚说服他作证。周叙赶到，赵德明当场索要硬盘，林晚把真硬盘和账本一起交给警方。",
+      "hook": {
+        "opening": "赵德明删掉的，是一块空盘。",
+        "cliffhanger": ""
+      },
+      "payoffs": [
+        { "kind": "reversal", "text": "真硬盘一直在林晚的白大褂口袋里" },
+        { "kind": "face-slap", "text": "赵德明当着民警索要硬盘，等于自认" }
+      ],
+      "characters": ["lin-wan", "xiao-yu", "zhou-xu", "zhao-deming"],
+      "locations": ["counter", "street"],
+      "props": ["cctv-drive", "ledger"]
+    }
+  ]
+}

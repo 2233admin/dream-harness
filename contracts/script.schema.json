@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "drama-harness/script.schema.json",
+  "title": "script.json：剧本，场次加节拍流（动作、台词、旁白交替）",
+  "type": "object",
+  "required": ["schemaVersion", "episodes"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "episodes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/episode" } }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "episode": {
+      "type": "object",
+      "required": ["number", "scenes"],
+      "additionalProperties": false,
+      "properties": {
+        "number": { "type": "integer", "minimum": 1 },
+        "scenes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/scene" } }
+      }
+    },
+    "scene": {
+      "type": "object",
+      "required": ["id", "locationId", "time", "interior", "characters", "beats"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "locationId": { "$ref": "#/$defs/id" },
+        "time": { "enum": ["day", "night", "dawn", "dusk"] },
+        "interior": { "type": "boolean" },
+        "characters": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "beats": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/beat" } }
+      }
+    },
+    "beat": {
+      "type": "object",
+      "required": ["type", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "enum": ["action", "dialogue", "voiceover"] },
+        "text": { "type": "string", "minLength": 1 },
+        "characterId": { "$ref": "#/$defs/id" },
+        "emotion": { "type": "string" },
+        "seconds": { "type": "number", "minimum": 0.5, "maximum": 15 }
+      }
+    }
+  }
+}
