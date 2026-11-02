@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -54,6 +54,22 @@ test('unparseable stage file is X2 and exits 1', () => withTemp((dir) => {
   const r = dh('validate', 'all', '--project', dir);
   assert.equal(r.code, 1);
   assert.match(r.out, /X2/);
+}));
+
+test('broken downstream file does not block validating upstream stages', () => withTemp((dir) => {
+  cpSync(SAMPLE, dir, { recursive: true });
+  writeFileSync(join(dir, 'script.json'), '{ not json');
+  assert.equal(dh('validate', 'project', '--project', dir).code, 0);
+  assert.equal(dh('validate', 'outline', '--project', dir).code, 0);
+  assert.equal(dh('validate', 'script', '--project', dir).code, 1);
+}));
+
+test('init refuses options the contract rejects and writes nothing', () => withTemp((dir) => {
+  const target = join(dir, 'too-long');
+  const r = dh('init', target, '--episodes', '201');
+  assert.equal(r.code, 2);
+  assert.match(r.err, /episodes/);
+  assert.equal(existsSync(target), false);
 }));
 
 test('init creates a project that passes the project gate', () => withTemp((dir) => {
