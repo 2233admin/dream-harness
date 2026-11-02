@@ -24,15 +24,17 @@ function gatesOf(findings, level) {
 }
 
 for (const kind of Object.keys(SAMPLES)) {
-  test(`${kind} sample passes every present stage with no findings`, () => {
+  test(`${kind} sample passes every present stage; only the partial-storyboard warning remains`, () => {
     const data = sample(kind);
     for (const stage of STAGES.filter((s) => data[s] !== undefined)) {
-      assert.deepEqual(runStage(stage, data), [], stage);
+      const expected = stage === 'storyboard' ? ['K13'] : [];
+      assert.deepEqual(runStage(stage, data).map((f) => f.gate), expected, stage);
     }
   });
 }
 
 const beats = (d, ep, scene) => d.script.episodes[ep].scenes[scene].beats;
+const shot = (d, seg, k) => d.storyboard.episodes[0].segments[seg].shots[k];
 
 // One counter-example per gate: [gate, sample, stage, level, mutate(data)].
 const CASES = [
@@ -82,6 +84,39 @@ const CASES = [
   ['S14', 'idea', 'script', 'warn', (d) => {
     for (let i = 0; i < 5; i++) beats(d, 2, 1).push({ type: 'dialogue', characterId: 'lin-wan', text: '还有一句。' });
   }],
+  ['C1', 'idea', 'cast', 'error', (d) => { d.cast.characters[0].anchors = [d.cast.characters[0].anchors[0]]; }],
+  ['C2', 'idea', 'cast', 'error', (d) => { d.cast.characters.pop(); }],
+  ['C3', 'idea', 'cast', 'error', (d) => { d.cast.characters[0].anchors[0].prompt = 'a red scarf'; }],
+  ['C4', 'idea', 'cast', 'error', (d) => { d.cast.characters[0].voice.prompt = '清亮偏低的女声，语速偏慢'; }],
+  ['C5', 'idea', 'cast', 'error', (d) => { d.cast.characters[0].imagePrompt += ', Lin Wan'; d.outline.characters[0].name = 'Lin Wan'; }],
+  ['C6', 'idea', 'cast', 'error', (d) => { d.cast.characters[0].defaultOutfit = 'gown'; }],
+  ['C7', 'idea', 'cast', 'warn', (d) => { delete d.cast.locked; }],
+  ['A1', 'idea', 'art', 'error', (d) => { d.art.locations[0].states = []; }],
+  ['A2', 'idea', 'art', 'error', (d) => { d.art.props = d.art.props.filter((p) => p.id !== 'ledger'); }],
+  ['A2', 'idea', 'art', 'error', (d) => { d.art.locations[2].id = 'rooftop'; }],
+  ['A3', 'idea', 'art', 'error', (d) => { d.art.era = '架空都市'; }],
+  ['A4', 'idea', 'art', 'error', (d) => { d.art.locations[0].anchors[0].prompt = 'a neon sign'; }],
+  ['A5', 'idea', 'art', 'error', (d) => { d.art.locations[0].states[0].prompt = '凌晨冷白灯'; }],
+  ['A6', 'idea', 'art', 'error', (d) => { d.art.locations[1].imagePrompt = d.art.locations[1].imagePrompt.replace(', empty scene, no people', ', a pharmacist sorting boxes'); }],
+  ['A7', 'idea', 'art', 'error', (d) => { d.art.locations[0].states.push({ ...d.art.locations[0].states[0] }); }],
+  ['K1', 'idea', 'storyboard', 'error', (d) => { shot(d, 0, 0).size = 'giant'; }],
+  ['K2', 'idea', 'storyboard', 'error', (d) => { d.storyboard.episodes[0].number = 9; }],
+  ['K3', 'idea', 'storyboard', 'error', (d) => { d.storyboard.episodes[0].segments[0].sceneId = 'e2-counter'; }],
+  ['K3', 'idea', 'storyboard', 'error', (d) => { const s = d.storyboard.episodes[0].segments; s.unshift(s.pop()); }],
+  ['K4', 'idea', 'storyboard', 'error', (d) => { shot(d, 0, 1).beats = [3, 3]; }],
+  ['K4', 'idea', 'storyboard', 'error', (d) => { d.storyboard.episodes[0].segments[3].shots.pop(); }],
+  ['K5', 'idea', 'storyboard', 'error', (d) => { shot(d, 0, 0).seconds = 9; }],
+  ['K5', 'idea', 'storyboard', 'error', (d) => { d.project.rules = { maxSegmentSeconds: 10 }; }],
+  ['K6', 'idea', 'storyboard', 'error', (d) => { shot(d, 1, 0).seconds = 3; }],
+  ['K7', 'idea', 'storyboard', 'error', (d) => { shot(d, 3, 0).subjects.push({ characterId: 'zhou-xu', action: '站着' }); }],
+  ['K7', 'idea', 'storyboard', 'error', (d) => { shot(d, 0, 0).subjects[0].outfit = 'tuxedo'; }],
+  ['K8', 'idea', 'storyboard', 'error', (d) => { shot(d, 0, 0).locationState = 'storeroom-night'; }],
+  ['K8', 'idea', 'storyboard', 'error', (d) => { shot(d, 0, 0).props.push('umbrella'); }],
+  ['K9', 'idea', 'storyboard', 'error', (d) => { delete d.cast.locked; }],
+  ['K10', 'idea', 'storyboard', 'error', (d) => { shot(d, 0, 0).frame = '凌晨的药店，一个少年推门进来'; }],
+  ['K11', 'idea', 'storyboard', 'error', (d) => { shot(d, 0, 0).body += '，林晚抬起头'; }],
+  ['K12', 'idea', 'storyboard', 'warn', (d) => { shot(d, 0, 0).subjects = []; }],
+  ['K13', 'idea', 'storyboard', 'warn', () => {}],
 ];
 
 for (const [gate, kind, stage, level, mutate] of CASES) {
@@ -124,4 +159,17 @@ test('every gate emitted by lib/ is documented in pipeline.md and covered by a c
     assert.ok(covered.has(gate), `${gate} has no counter-example`);
   }
   for (const gate of documented) assert.ok(emitted.has(gate), `${gate} documented but never emitted`);
+});
+
+test('A3 rejects vague eras but accepts named periods', () => {
+  for (const era of ['架空都市', '古代', 'historical setting', 'Ancient times', 'a fictional world', 'modern city']) {
+    const d = sample('idea');
+    d.art.era = era;
+    assert.ok(gatesOf(runStage('art', d), 'error').has('A3'), era);
+  }
+  for (const era of ['Edo period, 1800s Kyoto, Japan', 'Ancient Rome, 1st century AD', '明代江南', '民国上海', '1990s Hong Kong']) {
+    const d = sample('idea');
+    d.art.era = era;
+    assert.ok(!gatesOf(runStage('art', d)).has('A3'), era);
+  }
 });

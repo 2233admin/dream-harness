@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "characters": [
+    {
+      "id": "lin-wan",
+      "age": "28",
+      "look": "瘦高，齐肩短发别在耳后，素颜，眼下有熬夜的淡青；站姿笔直，做事前习惯先看一眼",
+      "anchors": [
+        { "name": "齐肩短发别在耳后", "prompt": "shoulder-length black hair tucked behind the ears" },
+        { "name": "胸前工牌", "prompt": "a pharmacist ID badge clipped to the chest pocket" },
+        { "name": "眼下淡青", "prompt": "faint shadows under the eyes" }
+      ],
+      "outfits": [
+        { "id": "white-coat", "name": "白大褂", "prompt": "a crisp white pharmacist coat over a grey knit sweater" },
+        { "id": "off-duty", "name": "下班便装", "prompt": "a beige trench coat over a grey knit sweater" }
+      ],
+      "defaultOutfit": "white-coat",
+      "imagePrompt": "A 28-year-old East Asian woman, slim and tall, shoulder-length black hair tucked behind the ears, no makeup, faint shadows under the eyes, calm attentive gaze, wearing a crisp white pharmacist coat over a grey knit sweater, a pharmacist ID badge clipped to the chest pocket, 2020s southern Chinese city, full body, front view, neutral standing pose, plain light grey background",
+      "negativePrompt": "heavy makeup, jewelry, long hair, smiling broadly, extra fingers",
+      "voice": {
+        "timbre": "清亮偏低的女声",
+        "pace": "偏慢，句尾收得干净",
+        "emotion": "平静，压着情绪",
+        "prompt": "Young adult female voice, clear with a slightly low register, measured pace, calm and restrained, crisp sentence endings, standard Mandarin"
+      }
+    },
+    {
+      "id": "zhao-deming",
+      "age": "50 出头",
+      "look": "微胖，发际线后移，常年笑眯眯，金属框眼镜，手腕一块金表",
+      "anchors": [
+        { "name": "金属框眼镜", "prompt": "thin gold metal-frame glasses" },
+        { "name": "金表", "prompt": "a gold wristwatch on the left wrist" },
+        { "name": "后移的发际线", "prompt": "receding hairline" }
+      ],
+      "outfits": [
+        { "id": "polo", "name": "深色 POLO 衫", "prompt": "a dark navy polo shirt tucked into grey slacks" }
+      ],
+      "defaultOutfit": "polo",
+      "imagePrompt": "A heavyset East Asian man in his early 50s, receding hairline, thin gold metal-frame glasses, genial smile that does not reach the eyes, a gold wristwatch on the left wrist, wearing a dark navy polo shirt tucked into grey slacks, 2020s southern Chinese city, full body, front view, neutral standing pose, plain light grey background",
+      "negativePrompt": "suit and tie, beard, young face, extra fingers",
+      "voice": {
+        "timbre": "略沙哑的中年男声",
+        "pace": "不紧不慢",
+        "emotion": "和气里带着压迫",
+        "prompt": "Middle-aged male voice, slightly husky, unhurried pace, friendly tone with an undercurrent of pressure, standard Mandarin with a light southern accent"
+      }
+    },
+    {
+      "id": "zhou-xu",
+      "age": "29",
+      "look": "寸头，肩宽，说话直，警服外套拉链拉到胸口",
+      "anchors": [
+        { "name": "寸头", "prompt": "close-cropped buzz cut" },
+        { "name": "警用肩章", "prompt": "police shoulder insignia" }
+      ],
+      "outfits": [
+        { "id": "uniform", "name": "警服外套", "prompt": "a dark blue police duty jacket zipped to the chest with police shoulder insignia" }
+      ],
+      "defaultOutfit": "uniform",
+      "imagePrompt": "A 29-year-old East Asian man, broad shoulders, close-cropped buzz cut, direct steady gaze, wearing a dark blue police duty jacket zipped to the chest with police shoulder insignia, 2020s southern Chinese city, full body, front view, neutral standing pose, plain light grey background",
+      "negativePrompt": "hat, sunglasses, weapon drawn, extra fingers",
+      "voice": {
+        "timbre": "干脆的青年男声",
+        "pace": "偏快",
+        "emotion": "直，不绕弯",
+        "prompt": "Young adult male voice, crisp and firm, slightly fast pace, direct and plain-spoken, standard Mandarin"
+      }
+    },
+    {
+      "id": "xiao-yu",
+      "age": "17",
+      "look": "瘦，帽衫帽檐压低，指甲啃得参差，眼神躲闪",
+      "anchors": [
+        { "name": "压低的黑色棒球帽", "prompt": "a black baseball cap pulled low" },
+        { "name": "灰色帽衫", "prompt": "an oversized grey hoodie" }
+      ],
+      "outfits": [
+        { "id": "hoodie", "name": "灰色帽衫", "prompt": "an oversized grey hoodie and faded black jeans" }
+      ],
+      "defaultOutfit": "hoodie",
+      "imagePrompt": "A thin 17-year-old East Asian boy, a black baseball cap pulled low, evasive downward glance, wearing an oversized grey hoodie and faded black jeans, 2020s southern Chinese city, full body, front view, neutral standing pose, plain light grey background",
+      "negativePrompt": "smiling, adult face, tattoos, extra fingers",
+      "voice": {
+        "timbre": "少年嗓，还没完全变声",
+        "pace": "说得急",
+        "emotion": "不耐烦，底下是怕",
+        "prompt": "Teenage male voice, not fully broken, hurried delivery, impatient on the surface with fear underneath, standard Mandarin"
+      }
+    }
+  ],
+  "locked": { "version": 1, "note": "样例：作者已确认定妆" }
+}

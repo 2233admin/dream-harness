@@ -10,9 +10,9 @@
 | 正文 | `story/chapters/`、`story/tracking/` | 待定 | `drama-write` | M6 |
 | 分集大纲 | `outline.json` | `contracts/outline.schema.json` | `drama-outline`、`drama-adapt` | M1 已实现 |
 | 剧本 | `script.json` | `contracts/script.schema.json` | `drama-script` | M1 已实现 |
-| 角色 | `cast.json` | 待定 | `drama-cast` | M2 |
-| 场景与道具 | `art.json` | 待定 | `drama-art` | M2 |
-| 分镜 | `storyboard.json` | 待定（ShotSpec） | `drama-storyboard` | M2 |
+| 角色 | `cast.json` | `contracts/cast.schema.json` | `drama-cast` | M2 已实现 |
+| 场景与道具 | `art.json` | `contracts/art.schema.json` | `drama-art` | M2 已实现 |
+| 分镜 | `storyboard.json` | `contracts/storyboard.schema.json`（ShotSpec） | `drama-storyboard` | M2 已实现 |
 | 提示词 | `prompts/<model>/` | 各适配器 | `drama-prompt` | M3 |
 | 生成与台账 | `assets/`、`assets/registry.json` | 待定 | `drama-gen` | M4 |
 | 验收与返修 | `qc/` | 待定 | `drama-qc` | M5 |
@@ -29,11 +29,13 @@ serial 长篇连载   → drama-write（正文 + 追踪，M6）→ drama-outline
 
 | source.kind | 大纲的上游 | 路径上的阶段 |
 | --- | --- | --- |
-| `idea` | project、bible | project → bible → outline → script |
-| `novel` | project、source | project → source → outline → script |
-| `serial` | project | project → outline → script（导入过原文时加 source） |
+| `idea` | project、bible | project → bible → outline → script → cast → art → storyboard |
+| `novel` | project、source | project → source → outline → script → cast → art → storyboard |
+| `serial` | project | project → outline → script → cast → art → storyboard（导入过原文时加 source） |
 
-`dh status` 按这条路径找第一个没通过的阶段，给出下一步。
+角色和美术只依赖大纲，可以和剧本同时做；分镜依赖剧本、角色、美术，并且要求角色已锁定。
+
+`dh status` 按这条路径找第一个没通过的阶段，给出下一步。分镜可以分批：只覆盖部分集数时 K13 给警告，`dh status` 会建议继续分镜剩下的集。
 
 ## 质量门
 
@@ -78,6 +80,33 @@ serial 长篇连载   → drama-write（正文 + 追踪，M6）→ drama-outline
 | S12 | script | 错误 | 动作节拍不夹引号台词 |
 | S13 | script | 警告 | 单集旁白超过 `rules.maxVoiceoverPerEpisode` 条（默认 3） |
 | S14 | script | 警告 | 连续台词超过 `rules.maxConsecutiveDialogue` 句（默认 4） |
+| C1 | cast | 错误 | 符合 schema |
+| C2 | cast | 错误 | 角色与大纲一一对应：不缺、不多、不重复 |
+| C3 | cast | 错误 | 每个外形锚点的英文短语都写进了 imagePrompt |
+| C4 | cast | 错误 | 提示词字段（出图、服装、锚点、音色）是英文 |
+| C5 | cast | 错误 | imagePrompt 不含人名和剧名 |
+| C6 | cast | 错误 | 服装 id 不重复，默认服装存在 |
+| C7 | cast | 警告 | 角色还没锁定（分镜前必须锁定） |
+| A1 | art | 错误 | 符合 schema |
+| A2 | art | 错误 | 场景与大纲一一对应；大纲的叙事道具都有设定；不出现大纲外的 id |
+| A3 | art | 错误 | 年代写具体，不写「古代」「架空」这类含糊词 |
+| A4 | art | 错误 | 每个锚点的英文短语都写进了 imagePrompt |
+| A5 | art | 错误 | 提示词字段（出图、锚点、状态）是英文 |
+| A6 | art | 错误 | 提示词不含人名和剧名；场景提示词写明空景 |
+| A7 | art | 错误 | 同一场景或道具的状态 id 不重复 |
+| K1 | storyboard | 错误 | 符合 schema |
+| K2 | storyboard | 错误 | 集号存在于剧本，不重复、不倒序 |
+| K3 | storyboard | 错误 | 段的场次属于该集、按剧本场次顺序排；段 id 和镜 id 不重复 |
+| K4 | storyboard | 错误 | 每场节拍按顺序被镜头认领，不重不漏 |
+| K5 | storyboard | 错误 | 单镜秒数在 `rules.minShotSeconds`–`rules.maxShotSeconds`（默认 1.5–8）；单段不超过 `rules.maxSegmentSeconds`（默认 15） |
+| K6 | storyboard | 错误 | 认领的台词装得进镜头秒数 |
+| K7 | storyboard | 错误 | 主体在本场出场角色里；指定的服装存在 |
+| K8 | storyboard | 错误 | 场景状态和道具在 art.json 里存在 |
+| K9 | storyboard | 错误 | cast.json 已锁定 |
+| K10 | storyboard | 错误 | 首帧画面点名每个主体（用于对应参考图） |
+| K11 | storyboard | 错误 | 镜头正文不出现人名（视频模型要求用通用身份） |
+| K12 | storyboard | 警告 | 每集第一镜没有人物 |
+| K13 | storyboard | 警告 | 剧本里还有集没有分镜 |
 
 ## 时长估算
 

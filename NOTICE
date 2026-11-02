@@ -1,7 +1,7 @@
 drama-harness
 
 Methods in this project were studied from the following projects and rewritten in
-skills/*/references/ with attribution. As of M1 no code or text is copied from them; any future reuse must keep the original license notice here.
+skills/*/references/ with attribution. As of M2 no code or text is copied from them; any future reuse must keep the original license notice here.
 
 - shuohao-skills — https://github.com/eternityspring/shuohao-skills — Apache License 2.0
   (adaptation outline, beat-claiming script contract, scripted quality gates)

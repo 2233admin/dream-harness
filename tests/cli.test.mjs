@@ -34,7 +34,8 @@ test('validate --json is machine readable', () => {
   const r = dh('validate', 'all', '--project', SAMPLE, '--json');
   const body = JSON.parse(r.out);
   assert.equal(body.pass, true);
-  assert.deepEqual(body.stages, ['project', 'bible', 'outline', 'script']);
+  assert.deepEqual(body.stages, ['project', 'bible', 'outline', 'script', 'cast', 'art', 'storyboard']);
+  assert.deepEqual(body.findings.map((f) => f.gate), ['K13']);
 });
 
 test('validate exits 1 on a broken copy of the sample', () => withTemp((dir) => {
@@ -92,11 +93,13 @@ test('usage errors exit 2', () => {
   assert.equal(dh('validate', 'all', '--unknown-flag').code, 2);
 });
 
-test('status routes the sample to the asset stage', () => {
+test('status routes the sample to the remaining storyboard episodes', () => {
   const status = JSON.parse(dh('status', '--project', SAMPLE, '--json').out);
-  assert.deepEqual(status.stages.map((s) => [s.stage, s.state]), [['project', 'pass'], ['bible', 'pass'], ['outline', 'pass'], ['script', 'pass']]);
+  assert.deepEqual(status.stages.map((s) => s.stage), ['project', 'bible', 'outline', 'script', 'cast', 'art', 'storyboard']);
+  assert.ok(status.stages.every((s) => s.state === 'pass'));
   assert.equal(status.durations.length, 3);
-  assert.match(status.next.skill, /drama-cast/);
+  assert.equal(status.next.skill, 'drama-storyboard');
+  assert.match(status.next.action, /第 2、3 集/);
 });
 
 test('doctor reports without failing on missing optional tools', () => {
@@ -109,7 +112,7 @@ test('novel path: init, import, then status asks drama-adapt for the outline', (
   const target = join(dir, 'adapt');
   assert.equal(dh('init', target, '--episodes', '2', '--source', 'novel').code, 0);
   let status = JSON.parse(dh('status', '--project', target, '--json').out);
-  assert.deepEqual(status.stages.map((s) => s.stage), ['project', 'source', 'outline', 'script']);
+  assert.deepEqual(status.stages.map((s) => s.stage), ['project', 'source', 'outline', 'script', 'cast', 'art', 'storyboard']);
   assert.match(status.next.action, /dh import/);
   const r = dh('import', join(ROOT, 'examples', 'clock-repair', 'novel', '修表铺.txt'), '--project', target);
   assert.equal(r.code, 0, r.err);

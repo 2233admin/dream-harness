@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "episodes": [
+    {
+      "number": 1,
+      "segments": [
+        {
+          "id": "e1-g1",
+          "sceneId": "e1-counter",
+          "blocking": "林晚在柜台后居中，面朝门口；小雨从画面右侧玻璃门进来，走到柜台前，两人隔着柜台相对",
+          "shots": [
+            {
+              "id": "e1-k1",
+              "beats": [0, 1],
+              "seconds": 4,
+              "size": "wide",
+              "angle": "eye-level",
+              "movement": "follow",
+              "subjects": [
+                { "characterId": "xiao-yu", "outfit": "hoodie", "action": "推门进来，快步走到柜台前，把一张处方拍在台面上" },
+                { "characterId": "lin-wan", "outfit": "white-coat", "action": "在柜台后抬起头" }
+              ],
+              "locationState": "counter-night",
+              "props": ["prescription"],
+              "frame": "凌晨的药店，墙上电子钟显示 02:00；小雨推开玻璃门进来，帽檐压低；林晚站在柜台后，刚抬起头",
+              "body": "镜头跟着一名戴黑色棒球帽的少年推门进店，他快步走到柜台前，把一张纸拍在玻璃台面上；柜台后一名穿白大褂的年轻女药师抬起头",
+              "sound": "风铃声，门外夜风，纸拍在玻璃上的一声"
+            },
+            {
+              "id": "e1-k2",
+              "beats": [2, 3],
+              "seconds": 3.5,
+              "size": "medium",
+              "angle": "over-shoulder",
+              "movement": "static",
+              "subjects": [
+                { "characterId": "xiao-yu", "action": "低着头说话" },
+                { "characterId": "lin-wan", "action": "拿起处方，举到灯下看" }
+              ],
+              "locationState": "counter-night",
+              "props": ["prescription"],
+              "frame": "越过小雨的肩膀看向林晚，林晚拿起处方举到灯下",
+              "body": "越过少年的肩膀，年轻女药师拿起那张纸，举到头顶的灯下细看",
+              "sound": "日光灯的嗡声"
+            },
+            {
+              "id": "e1-k3",
+              "beats": [4, 5],
+              "seconds": 4.5,
+              "size": "insert",
+              "angle": "high",
+              "movement": "push-in",
+              "subjects": [
+                { "characterId": "lin-wan", "action": "用指腹来回蹭处方上的红色签章" }
+              ],
+              "locationState": "counter-night",
+              "props": ["prescription"],
+              "frame": "处方特写，林晚的拇指按在红色医生签章上",
+              "body": "镜头缓缓推向纸上的红色印章，一只拇指在印章边缘来回蹭了两下，印迹纹丝不动",
+              "sound": "指腹擦过纸面的细响"
+            }
+          ]
+        },
+        {
+          "id": "e1-g2",
+          "sceneId": "e1-counter",
+          "blocking": "林晚和小雨隔柜台相对；赵德明从画面左侧后库门走出，站到林晚身边",
+          "shots": [
+            {
+              "id": "e1-k4",
+              "beats": [6, 6],
+              "seconds": 4.5,
+              "size": "medium-close",
+              "angle": "eye-level",
+              "movement": "static",
+              "subjects": [
+                { "characterId": "lin-wan", "action": "放下处方，平静地看着对方说话" }
+              ],
+              "locationState": "counter-night",
+              "props": ["prescription"],
+              "frame": "林晚中近景，处方压在她手掌下",
+              "body": "年轻女药师把纸压在掌下，看着对面的少年，语气平静",
+              "sound": "室内安静"
+            },
+            {
+              "id": "e1-k5",
+              "beats": [7, 7],
+              "seconds": 2,
+              "size": "close-up",
+              "angle": "eye-level",
+              "movement": "static",
+              "subjects": [
+                { "characterId": "xiao-yu", "action": "猛地抬头，声音发急" }
+              ],
+              "locationState": "counter-night",
+              "props": [],
+              "frame": "小雨近景，帽檐下露出慌张的眼睛",
+              "body": "少年猛地抬起头，帽檐下的眼神发慌",
+              "sound": ""
+            },
+            {
+              "id": "e1-k6",
+              "beats": [8, 9],
+              "seconds": 5,
+              "size": "medium",
+              "angle": "eye-level",
+              "movement": "pan",
+              "subjects": [
+                { "characterId": "zhao-deming", "outfit": "polo", "action": "从后库门走出来，笑着从林晚手下抽走处方" },
+                { "characterId": "lin-wan", "action": "侧头看他" }
+              ],
+              "locationState": "counter-night",
+              "props": ["prescription"],
+              "frame": "后库门口，赵德明笑着走出来；林晚在柜台后侧过头",
+              "body": "镜头摇向后库门，一名戴金属框眼镜的微胖中年男人笑着走出来，伸手从女药师掌下抽走那张纸",
+              "sound": "后库门轴吱呀一声"
+            }
+          ]
+        },
+        {
+          "id": "e1-g3",
+          "sceneId": "e1-counter",
+          "blocking": "赵德明在柜台中间装药，小雨在柜台前；林晚退半步站在赵德明右侧",
+          "shots": [
+            {
+              "id": "e1-k7",
+              "beats": [10, 10],
+              "seconds": 3,
+              "size": "medium",
+              "angle": "eye-level",
+              "movement": "static",
+              "subjects": [
+                { "characterId": "zhao-deming", "action": "从柜里取出药瓶装进塑料袋递过去" },
+                { "characterId": "xiao-yu", "action": "抓起袋子转身就走" }
+              ],
+              "locationState": "counter-night",
+              "props": [],
+              "frame": "赵德明把装着药瓶的塑料袋递给小雨",
+              "body": "中年男人把几瓶药装进塑料袋递过柜台，少年一把抓过袋子，转身走向门口",
+              "sound": "药瓶在塑料袋里碰撞，风铃又响一下"
+            },
+            {
+              "id": "e1-k8",
+              "beats": [11, 11],
+              "seconds": 3,
+              "size": "medium-close",
+              "angle": "eye-level",
+              "movement": "static",
+              "subjects": [
+                { "characterId": "lin-wan", "action": "转向身边的人，压着火说话" }
+              ],
+              "locationState": "counter-night",
+              "props": [],
+              "frame": "林晚中近景，转头看向画面左侧的赵德明",
+              "body": "年轻女药师转向身边的中年男人，压低声音",
+              "sound": ""
+            },
+            {
+              "id": "e1-k9",
+              "beats": [12, 12],
+              "seconds": 3.5,
+              "size": "medium-close",
+              "angle": "eye-level",
+              "movement": "static",
+              "subjects": [
+                { "characterId": "zhao-deming", "action": "笑着拍拍柜台，朝后库方向偏了偏头" }
+              ],
+              "locationState": "counter-night",
+              "props": [],
+              "frame": "赵德明中近景，笑容挂在脸上，眼睛没有笑",
+              "body": "中年男人脸上挂着笑，手掌拍了拍柜台，朝后库方向偏了偏头",
+              "sound": ""
+            }
+          ]
+        },
+        {
+          "id": "e1-g4",
+          "sceneId": "e1-storeroom",
+          "blocking": "林晚在后库中央的垃圾桶旁蹲下；后库门在画面右侧",
+          "shots": [
+            {
+              "id": "e1-k10",
+              "beats": [0, 0],
+              "seconds": 2.5,
+              "size": "medium",
+              "angle": "eye-level",
+              "movement": "static",
+              "subjects": [
+                { "characterId": "lin-wan", "action": "把垃圾桶拖出来准备换袋，动作一停" }
+              ],
+              "locationState": "storeroom-night",
+              "props": [],
+              "frame": "暖黄灯下的后库，林晚蹲在垃圾桶旁",
+              "body": "暖黄灯下，年轻女药师把垃圾桶拖出来，正要换袋，动作停住",
+              "sound": "纸箱摩擦地面"
+            },
+            {
+              "id": "e1-k11",
+              "beats": [1, 1],
+              "seconds": 3,
+              "size": "insert",
+              "angle": "overhead",
+              "movement": "static",
+              "subjects": [
+                { "characterId": "lin-wan", "action": "从桶底抽出一整叠处方笺" }
+              ],
+              "locationState": "storeroom-night",
+              "props": ["prescription"],
+              "frame": "俯拍桶底，林晚的手抽出一整叠盖好红章的空白处方",
+              "body": "俯拍桶底，一只手从垃圾里抽出一整叠处方笺，每一张角上都有同一个红色印章",
+              "sound": "纸张摩擦"
+            },
+            {
+              "id": "e1-k12",
+              "beats": [2, 2],
+              "seconds": 3,
+              "size": "medium",
+              "angle": "low",
+              "movement": "static",
+              "subjects": [
+                { "characterId": "lin-wan", "action": "听见门外脚步声，抬头，把处方塞进白大褂口袋" }
+              ],
+              "locationState": "storeroom-night",
+              "props": ["prescription"],
+              "frame": "低角度，林晚抬头看向画面右侧的门，手里的处方正往口袋里塞",
+              "body": "门外传来脚步声，年轻女药师抬头看向门口，把那叠纸塞进白大褂口袋",
+              "sound": "由远及近的脚步声"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

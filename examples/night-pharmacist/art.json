@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "era": "2020年代中国南方城市",
+  "locations": [
+    {
+      "id": "counter",
+      "purpose": "一排柜台隔开药师和顾客，所有对峙都隔着这块玻璃发生",
+      "anchors": [
+        { "name": "玻璃柜台", "prompt": "a long glass display counter" },
+        { "name": "墙上电子钟", "prompt": "a red digital wall clock" },
+        { "name": "门口风铃", "prompt": "a small brass wind chime above the glass door" },
+        { "name": "背后药柜", "prompt": "floor-to-ceiling white medicine shelves behind the counter" }
+      ],
+      "states": [
+        { "id": "counter-night", "name": "凌晨冷白灯", "prompt": "late night, cold white fluorescent ceiling light, dark street visible through the glass door" },
+        { "id": "counter-dawn", "name": "天刚亮", "prompt": "early dawn, pale blue daylight through the glass door mixing with fluorescent light" }
+      ],
+      "imagePrompt": "Interior of a small 24-hour pharmacy in a 2020s southern Chinese city, a long glass display counter in the foreground, floor-to-ceiling white medicine shelves behind the counter, a red digital wall clock, a small brass wind chime above the glass door, clean tiled floor, empty scene, no people",
+      "negativePrompt": "people, hands, customers, text, logos"
+    },
+    {
+      "id": "storeroom",
+      "purpose": "店里唯一看不见的角落，证据和秘密都藏在这里",
+      "anchors": [
+        { "name": "纸箱堆", "prompt": "stacked cardboard medicine boxes" },
+        { "name": "暖黄吸顶灯", "prompt": "a single warm yellow ceiling lamp" },
+        { "name": "监控主机", "prompt": "a small CCTV recorder with green indicator lights in the corner" }
+      ],
+      "states": [
+        { "id": "storeroom-night", "name": "深夜吸顶灯", "prompt": "late night, a single warm yellow ceiling lamp, deep shadows between the boxes" }
+      ],
+      "imagePrompt": "A narrow pharmacy back storeroom in a 2020s southern Chinese city, stacked cardboard medicine boxes on metal shelves, a single warm yellow ceiling lamp, a small CCTV recorder with green indicator lights in the corner, a metal filing cabinet, empty scene, no people",
+      "negativePrompt": "people, hands, text, logos"
+    },
+    {
+      "id": "street",
+      "purpose": "天亮后的出口，故事在这里松一口气",
+      "anchors": [
+        { "name": "绿十字灯牌", "prompt": "a glowing green cross pharmacy sign" },
+        { "name": "路灯", "prompt": "a single street lamp" },
+        { "name": "湿漉漉的路面", "prompt": "wet asphalt" }
+      ],
+      "states": [
+        { "id": "street-dawn", "name": "黎明", "prompt": "dawn, soft blue sky, street lamp still on, faint red and blue light reflecting on the ground" }
+      ],
+      "imagePrompt": "A quiet street corner outside a small pharmacy in a 2020s southern Chinese city, a glowing green cross pharmacy sign, a single street lamp, wet asphalt, rolling shutters of closed shops, empty scene, no people",
+      "negativePrompt": "people, cars in motion, text, logos"
+    }
+  ],
+  "props": [
+    {
+      "id": "prescription",
+      "purpose": "第一集的物证：章是印上去的，不是盖上去的",
+      "anchors": [
+        { "name": "红色医生签章", "prompt": "a red doctor's seal stamp" },
+        { "name": "空白处方笺", "prompt": "blank prescription forms" }
+      ],
+      "states": [
+        { "id": "single", "name": "单张", "prompt": "a single filled prescription form on a glass counter" },
+        { "id": "stack", "name": "一整叠", "prompt": "a thick stack of blank prescription forms" }
+      ],
+      "imagePrompt": "A thick stack of blank prescription forms, each printed with a red doctor's seal stamp in the corner, white paper, studio product shot, plain white background"
+    },
+    {
+      "id": "ledger",
+      "purpose": "第二集的物证：日期和小雨来店的夜晚一一对上",
+      "anchors": [
+        { "name": "黑色硬皮", "prompt": "a black hardcover notebook" },
+        { "name": "手写日期列", "prompt": "handwritten columns of dates and numbers" }
+      ],
+      "imagePrompt": "A black hardcover notebook lying open, handwritten columns of dates and numbers in blue ink, slightly worn corners, studio product shot, plain white background"
+    },
+    {
+      "id": "cctv-drive",
+      "purpose": "第三集的反转：赵德明删掉的是空盘",
+      "anchors": [
+        { "name": "银色硬盘", "prompt": "a silver 3.5-inch hard drive" },
+        { "name": "手写标签", "prompt": "a small handwritten white label" }
+      ],
+      "imagePrompt": "A silver 3.5-inch hard drive with a small handwritten white label, studio product shot, plain white background"
+    }
+  ]
+}

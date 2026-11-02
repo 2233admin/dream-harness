@@ -1,6 +1,6 @@
 ---
 name: drama
-version: 0.2.0
+version: 0.3.0
 description: |
   短剧创作总入口：创建短剧项目，判断项目处于哪一步，路由到下一个 skill，并守住人工确认点。
   支持三种写文入口（一句话原创、改编已有小说、网文长篇连载），全部汇合到 outline.json，
@@ -35,7 +35,7 @@ node <仓库根>/bin/dh.mjs <命令>
 | `dh init <目录> --title 剧名 --episodes N --source idea\|novel\|serial` | 新建项目 |
 | `dh import <小说.txt> --project <目录>` | 导入小说原文，切章建索引（改编入口） |
 | `dh status --project <目录>` | 本项目路径上各阶段的状态、单集时长、下一步建议 |
-| `dh validate <project\|bible\|source\|outline\|script\|all> --project <目录>` | 跑质量门；退出码 0 通过、1 有错误、2 参数错误 |
+| `dh validate <project\|bible\|source\|outline\|script\|cast\|art\|storyboard\|all> --project <目录>` | 跑质量门；退出码 0 通过、1 有错误、2 参数错误 |
 | `dh doctor` | 检查依赖与 API key 是否就位，只报告，不安装 |
 
 需要机器读取时加 `--json`。
