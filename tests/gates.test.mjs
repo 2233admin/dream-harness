@@ -160,3 +160,16 @@ test('every gate emitted by lib/ is documented in pipeline.md and covered by a c
   }
   for (const gate of documented) assert.ok(emitted.has(gate), `${gate} documented but never emitted`);
 });
+
+test('A3 rejects vague eras but accepts named periods', () => {
+  for (const era of ['架空都市', '古代', 'historical setting', 'Ancient times', 'a fictional world', 'modern city']) {
+    const d = sample('idea');
+    d.art.era = era;
+    assert.ok(gatesOf(runStage('art', d), 'error').has('A3'), era);
+  }
+  for (const era of ['Edo period, 1800s Kyoto, Japan', 'Ancient Rome, 1st century AD', '明代江南', '民国上海', '1990s Hong Kong']) {
+    const d = sample('idea');
+    d.art.era = era;
+    assert.ok(!gatesOf(runStage('art', d)).has('A3'), era);
+  }
+});
