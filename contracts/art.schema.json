@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "drama-harness/art.schema.json",
+  "title": "art.json：场景与叙事道具设定；提示词一律英文，场景提示词必须空景",
+  "type": "object",
+  "required": ["schemaVersion", "era", "locations", "props"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "era": { "type": "string", "minLength": 2 },
+    "locations": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/location" } },
+    "props": { "type": "array", "items": { "$ref": "#/$defs/prop" } },
+    "locked": {
+      "type": "object",
+      "required": ["version"],
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "integer", "minimum": 1 },
+        "note": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "anchor": {
+      "type": "object",
+      "required": ["name", "prompt"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "prompt": { "type": "string", "minLength": 2 }
+      }
+    },
+    "state": {
+      "type": "object",
+      "required": ["id", "name", "prompt"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "type": "string", "minLength": 1 },
+        "prompt": { "type": "string", "minLength": 2 }
+      }
+    },
+    "location": {
+      "type": "object",
+      "required": ["id", "purpose", "anchors", "states", "imagePrompt"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "purpose": { "type": "string", "minLength": 1 },
+        "anchors": { "type": "array", "minItems": 3, "maxItems": 5, "items": { "$ref": "#/$defs/anchor" } },
+        "states": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/state" } },
+        "imagePrompt": { "type": "string", "minLength": 20 },
+        "negativePrompt": { "type": "string" }
+      }
+    },
+    "prop": {
+      "type": "object",
+      "required": ["id", "purpose", "anchors", "imagePrompt"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "purpose": { "type": "string", "minLength": 1 },
+        "anchors": { "type": "array", "minItems": 1, "maxItems": 5, "items": { "$ref": "#/$defs/anchor" } },
+        "states": { "type": "array", "items": { "$ref": "#/$defs/state" } },
+        "imagePrompt": { "type": "string", "minLength": 10 }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "drama-harness/storyboard.schema.json",
+  "title": "storyboard.json：分镜（ShotSpec），集 → 段（一次视频生成）→ 镜（认领剧本节拍）；与具体视频模型无关",
+  "type": "object",
+  "required": ["schemaVersion", "episodes"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "episodes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/episode" } }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "episode": {
+      "type": "object",
+      "required": ["number", "segments"],
+      "additionalProperties": false,
+      "properties": {
+        "number": { "type": "integer", "minimum": 1 },
+        "segments": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/segment" } }
+      }
+    },
+    "segment": {
+      "type": "object",
+      "required": ["id", "sceneId", "blocking", "shots"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "sceneId": { "$ref": "#/$defs/id" },
+        "blocking": { "type": "string", "minLength": 1 },
+        "shots": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/shot" } }
+      }
+    },
+    "shot": {
+      "type": "object",
+      "required": ["id", "beats", "seconds", "size", "angle", "movement", "subjects", "locationState", "props", "frame", "body"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "beats": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "integer", "minimum": 0 } },
+        "seconds": { "type": "number", "minimum": 0.5, "maximum": 15 },
+        "size": { "enum": ["extreme-wide", "wide", "full", "medium", "medium-close", "close-up", "extreme-close-up", "insert"] },
+        "angle": { "enum": ["eye-level", "high", "low", "overhead", "dutch", "over-shoulder", "pov"] },
+        "movement": { "enum": ["static", "push-in", "pull-out", "pan", "tilt", "track", "follow", "handheld", "crane", "orbit"] },
+        "subjects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["characterId", "action"],
+            "additionalProperties": false,
+            "properties": {
+              "characterId": { "$ref": "#/$defs/id" },
+              "outfit": { "$ref": "#/$defs/id" },
+              "action": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "locationState": { "$ref": "#/$defs/id" },
+        "props": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "frame": { "type": "string", "minLength": 1 },
+        "body": { "type": "string", "minLength": 1 },
+        "sound": { "type": "string" }
+      }
+    }
+  }
+}
