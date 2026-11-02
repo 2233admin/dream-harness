@@ -19,4 +19,5 @@ drama-harness：由 Agent 调用的短剧创作 skill 集合与 `dh` CLI。设�
 ```bash
 npm test
 node bin/dh.mjs validate all --project examples/night-pharmacist
+node bin/dh.mjs validate all --project examples/clock-repair
 ```

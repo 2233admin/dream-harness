@@ -8,6 +8,6 @@
   "engines": { "node": ">=22" },
   "scripts": {
     "test": "node --test \"tests/*.test.mjs\"",
-    "validate:examples": "node bin/dh.mjs validate all --project examples/night-pharmacist"
+    "validate:examples": "node bin/dh.mjs validate all --project examples/night-pharmacist && node bin/dh.mjs validate all --project examples/clock-repair"
   }
 }

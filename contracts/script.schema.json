@@ -13,10 +13,11 @@
     "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
     "episode": {
       "type": "object",
-      "required": ["number", "scenes"],
+      "required": ["number", "hookBeat", "scenes"],
       "additionalProperties": false,
       "properties": {
         "number": { "type": "integer", "minimum": 1 },
+        "hookBeat": { "type": "integer", "minimum": 0 },
         "scenes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/scene" } }
       }
     },

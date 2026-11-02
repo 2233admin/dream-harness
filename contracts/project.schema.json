@@ -60,6 +60,17 @@
         "defaultActionSeconds": { "type": "number", "minimum": 0.5, "maximum": 15 }
       }
     },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hookWindow": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "maxLineUnits": { "type": "integer", "minimum": 5, "maximum": 100 },
+        "maxPayoffGap": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "maxVoiceoverPerEpisode": { "type": "integer", "minimum": 0, "maximum": 20 },
+        "maxConsecutiveDialogue": { "type": "integer", "minimum": 2, "maximum": 20 }
+      }
+    },
     "budget": {
       "type": "object",
       "required": ["currency", "limit"],
